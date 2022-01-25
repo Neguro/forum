@@ -4,7 +4,7 @@
  */
 class Pdo {
 
-    private static $serveur = 'mysql:host=postgresql-neguro.alwaysdata.net';
+    private static $serveur = 'mysql:host=mysql-neguro.alwaysdata.net';
     private static $bdd = 'dbname=forum';
     private static $user = 'neguro_admin';
     private static $mdp = 'Azerty1622++';
