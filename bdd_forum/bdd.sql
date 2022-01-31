@@ -13,6 +13,7 @@ create table User (
     prenom varchar(25) not null,
     username varchar(20) not null,
     email varchar(50) unique,
+    mdp varchar(50) not null,
     id_r integer not null,
     constraint fk_role foreign key (id_r) references roleUser(id_r)
 );
@@ -50,9 +51,9 @@ create table Commentaire (
 insert into roleUser values (1, 'admin');
 insert into roleUser values (2, 'user');
 
-insert into user values (1, 'admin',     'admin',   'admin',  'admin@admin.com', 1);
-insert into user values (2, 'FANG',      'Jingyao', 'FJY',    'fangjingyao8@gmail.com', 2);
-insert into user values (3, 'AHMED ALI', 'Nassim',  'Nassim', 'nassim.ahmedali@gmail.com', 2);
+insert into user values (1, 'admin',     'admin',   'admin',  'admin@admin.com', 'admin', 1);
+insert into user values (2, 'FANG',      'Jingyao', 'FJY',    'fangjingyao8@gmail.com', '20010619abc', 2);
+insert into user values (3, 'AHMED ALI', 'Nassim',  'Nassim', 'nassim.ahmedali@gmail.com', '123456', 2);
 
 insert into Categorie values (1, 'Informatique');
 insert into Categorie values (2, 'Biologie');
