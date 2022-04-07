@@ -7,7 +7,7 @@ if(!$c) {
 } 
 
 switch($a) {
-    case '':
+    case 'demandeSignin':
         include 'views/inscription'; // n'existe pas encore... (a faire)
         break;
     case 'signin':
