@@ -52,8 +52,9 @@ insert into roleUser values (1, 'admin');
 insert into roleUser values (2, 'user');
 
 insert into user values (1, 'admin',     'admin',   'admin',  'admin@admin.com', 'admin', 1);
-insert into user values (2, 'FANG',      'Jingyao', 'FJY',    'fangjingyao8@gmail.com', '20010619abc', 2);
-insert into user values (3, 'AHMED ALI', 'Nassim',  'Nassim', 'nassim.ahmedali@gmail.com', '123456', 2);
+insert into user values (2, 'FANG',      'Jingyao', 'Jingyao',    'fangjingyao8@gmail.com', 'Fang', 2);
+insert into user values (3, 'AHMED ALI', 'Nassim',  'Neguro', 'nassim.ahmedali@gmail.com', 'Nassim', 2);
+insert into user values (3, 'PALACIOS', 'Mayeul',  'May4837', 'mayeul@gmail.com', 'Amedeleader', 2);
 
 insert into Categorie values (1, 'Informatique');
 insert into Categorie values (2, 'Biologie');
