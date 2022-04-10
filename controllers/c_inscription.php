@@ -8,14 +8,14 @@ if(!$c) {
 
 switch($a) {
     case 'demandeSignin':
-        include 'views/inscription'; // n'existe pas encore... (a faire)
+        include 'views/inscription.php'; // n'existe pas encore... (a faire)
         break;
     case 'signin':
-        $nom = filter_input(INPUT_POST,'',FILTER_SANITIZE_STRING);
-        $prenom = filter_input(INPUT_POST,'',FILTER_SANITIZE_STRING);
-        $username = filter_input(INPUT_POST,'',FILTER_SANITIZE_STRING);
-        $mdp = filter_input(INPUT_POST,'',FILTER_SANITIZE_STRING);
-        $email = filter_input(INPUT_POST,'',FILTER_SANITIZE_STRING);
+        $nom = filter_input(INPUT_POST,'nom',FILTER_SANITIZE_STRING);
+        $prenom = filter_input(INPUT_POST,'prenom',FILTER_SANITIZE_STRING);
+        $username = filter_input(INPUT_POST,'username',FILTER_SANITIZE_STRING);
+        $mdp = filter_input(INPUT_POST,'mdp',FILTER_SANITIZE_STRING);
+        $email = filter_input(INPUT_POST,'email',FILTER_SANITIZE_STRING);
         $user = $pdo->inscription($nom, $prenom, $username, $email, $mdp);
         if($user == null){
             // a crée vue pour erreurs et vue inscription
@@ -27,6 +27,7 @@ switch($a) {
         }
         break;
     default:
-        include 'views/inscription'; // n'existe pas encore... (a faire)
+        include 'views/inscription.php'; // n'existe pas encore... (a faire)
+        var_dump($pdo);
         break;
 }

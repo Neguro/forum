@@ -8,7 +8,8 @@ class PdoForum {
     private static $bdd = 'dbname=heroku_46cc08b23a74aff';
     private static $user = 'b28adad638185e';
     private static $mdp = '8fd030cf';
-    private static $monPdo = null;
+    private static $monPdo;
+    private static $monPdoForum = null;
 
   
     /**
@@ -39,10 +40,10 @@ class PdoForum {
      * @return l'unique objet de la classe Pdo
      */
     public static function getPdoForum() {
-      if (PdoForum::$monPdo == null) {
-        PdoForum::$monPdo = new PdoForum();
+      if (PdoForum::$monPdoForum == null) {
+        PdoForum::$monPdoForum = new PdoForum();
       }
-      return PdoForum::$monPdo;
+      return PdoForum::$monPdoForum;
     }
 
     /**
@@ -50,10 +51,7 @@ class PdoForum {
      */
     public static function inscription(string $nom, string $prenom, string $username, string $email, string $mdp) {
       $mdpHash = md5($mdp);
-      $requete = PdoForum::$monPdo->prepare(
-        'INSERT into User'
-        . '(nom,prenom,username,email,mdp,id_r)'
-        . '(:unNom,:unPrenom,:unUsername,:unEmail,:unMdp,2)');
+      $requete = PdoForum::$monPdo->prepare("insert into User (nom,prenom,username,email,mdp,id_r) values (:unNom,:unPrenom,:unUsername,:unEmail,:unMdp,2)");
         $requete->bindParam(':unNom',$nom,PDO::PARAM_STR);
         $requete->bindParam(':unPrenom',$prenom,PDO::PARAM_STR);
         $requete->bindParam(':unUsername',$username,PDO::PARAM_STR);
