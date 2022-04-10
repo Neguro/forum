@@ -2,7 +2,7 @@
 /**
  * Classe Pdo
  */
-class Pdo {
+class PdoForum {
 
     private static $serveur = 'mysql:host=eu-cdbr-west-02.cleardb.net';
     private static $bdd = 'dbname=heroku_46cc08b23a74aff';
@@ -16,12 +16,12 @@ class Pdo {
      * pour toutes les méthodes de la classe
      */
     private function __construct() {
-      Pdo::$monPdo = new PDO(
-        Pdo::$serveur . ';' . Pdo::$bdd,
-        Pdo::$user,
-        Pdo::$mdp
+      PdoForum::$monPdo = new PDO(
+        PdoForum::$serveur . ';' . PdoForum::$bdd,
+        PdoForum::$user,
+        PdoForum::$mdp
       );
-      Pdo::$monPdo->query('SET CHARACTER SET utf8');
+      PdoForum::$monPdo->query('SET CHARACTER SET utf8');
     }
   
     /**
@@ -29,7 +29,7 @@ class Pdo {
      * objet donné, ou dans n'importe quel ordre pendant la séquence d'arrêt.
      */
     public function __destruct() {
-      Pdo::$monPdo = null;
+      PdoForum::$monPdo = null;
     }
   
     /**
@@ -38,11 +38,11 @@ class Pdo {
      *
      * @return l'unique objet de la classe Pdo
      */
-    public static function getPdo() {
-      if (Pdo::$monPdo == null) {
-        Pdo::$monPdo = new Pdo();
+    public static function getPdoForum() {
+      if (PdoForum::$monPdo == null) {
+        PdoForum::$monPdo = new PdoForum();
       }
-      return Pdo::$monPdo;
+      return PdoForum::$monPdo;
     }
 
     /**
@@ -50,7 +50,7 @@ class Pdo {
      */
     public static function inscription(string $nom, string $prenom, string $username, string $email, string $mdp) {
       $mdpHash = md5($mdp);
-      $requete = Pdo::$monPdo->prepare(
+      $requete = PdoForum::$monPdo->prepare(
         'INSERT into User'
         . '(nom,prenom,username,email,mdp,id_r)'
         . '(:unNom,:unPrenom,:unUsername,:unEmail,:unMdp,2)');

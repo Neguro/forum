@@ -1,8 +1,9 @@
 <?php
 require_once 'fonctions/pdo.php';
 require_once 'fonctions/funct.inc.php';
+
 session_start(); // crée une session pour stocker les infos utiles
-$pdo = Pdo::getPdo(); // instancie l'object pour se connecter a la bdd
+$pdo = PdoForum::getPdoForum();// instancie l'object pour se connecter a la bdd
 //estConnecter() // Pour savoir si l'utilisateur est connecter ou pas 
 
 $c = filter_input(INPUT_GET, 'c', FILTER_SANITIZE_STRING);
