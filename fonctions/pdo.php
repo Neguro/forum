@@ -49,7 +49,7 @@ class PdoForum {
     /**
      * Fonction statique qui permet l'inscription d'un utilisateur dans la base de données.
      */
-    public static function inscription(string $nom, string $prenom, string $username, string $email, string $mdp) {
+    public function inscription(string $nom, string $prenom, string $username, string $email, string $mdp) {
       $mdpHash = md5($mdp);
       $requete = PdoForum::$monPdo->prepare("insert into User (nom,prenom,username,email,mdp,id_r) values (:unNom,:unPrenom,:unUsername,:unEmail,:unMdp,2)");
         $requete->bindParam(':unNom',$nom,PDO::PARAM_STR);
@@ -60,4 +60,36 @@ class PdoForum {
         $requete->execute();
     }
   
+    public function getInfosUser(string $username, string $mdp){
+      if ($this->verif_mdp($mdp, $username))
+      {
+        $requete = PdoForum::$monPdo->prepare("select * from User where username = :unUsername");
+        $requete->bindParam(':unUsername',$username,PDO::PARAM_STR);
+        $requete->execute();
+        return $requete->fetch(PDO::FETCH_ASSOC);
+      }
+      return null;
+    }
+
+    public function recupMdpUser(string $username){
+        $requete = PdoForum::$monPdo->prepare("select mdp from User where username = :unUsername");
+        $requete->bindParam(':unUsername',$username,PDO::PARAM_STR);
+        $requete->execute();
+        return $requete->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function verif_mdp(string $mdp,string $username) 
+    {
+      $res = $this->recupMdpUser($username);
+      $mdp = hash('md5', $mdp);
+      $mdp_hash = $res['mdp'];
+      if ($mdp === $mdp_hash) 
+      {
+        return true;
+      } 
+      else 
+      {
+        return false;
+      }
+    }
   }

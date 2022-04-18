@@ -1,5 +1,7 @@
-<?php
-
+<?php  
+    echo "<p>Bienvenue " .  $_SESSION['pseudo'] . "</p>";   
 ?>
 
-<p>YOOOOOOOO</p>
+<a href="index.php?c=deconnexion&a=logout">
+    <button class="" type="button"> Se déconnecter </button>
+</a>
