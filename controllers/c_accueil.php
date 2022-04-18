@@ -1,3 +1,10 @@
 <?php
 
-include 'views/accueil.php';
+if ($connect) 
+{ 
+    include 'views/accueil.php';   
+}
+else 
+{
+    include 'views/connexion.php';
+}

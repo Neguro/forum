@@ -28,6 +28,5 @@ switch($a) {
         break;
     default:
         include 'views/inscription.php'; // n'existe pas encore... (a faire)
-        var_dump($pdo);
         break;
 }

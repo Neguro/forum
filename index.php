@@ -4,11 +4,16 @@ require_once 'fonctions/funct.inc.php';
 
 session_start(); // crée une session pour stocker les infos utiles
 $pdo = PdoForum::getPdoForum();// instancie l'object pour se connecter a la bdd
-//estConnecter() // Pour savoir si l'utilisateur est connecter ou pas 
+$connect = estConnecte();
 
 $c = filter_input(INPUT_GET, 'c', FILTER_SANITIZE_STRING);
 
-if (empty($c)) 
+// Si un utilisateur non identifier essaie d'utiliser les fonctionnalité du forum
+if ($c && !$connect) 
+{
+    $uc = 'connexion';
+}
+elseif (empty($c)) 
 {
     $c = 'accueil';
 }
@@ -26,6 +31,12 @@ switch ($c)
     case 'inscription':
         include 'controllers/c_inscription.php';
         break;
+    case 'connexion':
+        include 'controllers/c_connexion.php';
+        break;  
+    case 'deconnexion':
+        include 'controllers/c_deconnexion.php';
+        break;  
 }
 
 require 'views/footer.php';
