@@ -92,4 +92,10 @@ class PdoForum {
         return false;
       }
     }
+
+    public function afficherPosts() {
+      $requete = PdoForum::$monPdo->prepare("select id_p, titre, contenu, date_crea, nbr_like, nbr_dislike, User.username ,id_c from Post inner join User on Post.id_u = User.id_u");
+      $requete->execute();
+      return $requete->fetchAll(PDO::FETCH_ASSOC);
+    }
   }
