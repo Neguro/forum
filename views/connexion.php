@@ -14,3 +14,7 @@
     <input type="submit" value="Se connecter">
   </div>
 </form>
+
+<a href="index.php?c=inscription&a=demandeSignin">
+    <button class="" type="button"> Inscription </button>
+</a>

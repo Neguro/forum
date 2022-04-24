@@ -1,8 +1,10 @@
 <?php
-
+  
 if ($connect) 
 { 
-    include 'views/accueil.php';   
+   
+    include 'views/accueil.php';  
+    
 }
 else 
 {

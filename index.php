@@ -37,6 +37,9 @@ switch ($c)
     case 'deconnexion':
         include 'controllers/c_deconnexion.php';
         break;  
+    case 'posts':
+        include 'controllers/c_posts.php';
+        break;
 }
 
 require 'views/footer.php';
